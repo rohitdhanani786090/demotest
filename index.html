@@ -1,0 +1,1884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Nomad's Haven Hostel - Your Home Away From Home</title>
+    <link rel="icon" href="https://placehold.co/32x32/FF8C00/FFFFFF?text=NH" type="image/x-icon">
+    <style>
+        /* General Body Styles */
+        body {
+            font-family: 'Inter', sans-serif; /* Using Inter for a modern look */
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+            color: #333;
+            line-height: 1.7;
+            scroll-behavior: smooth;
+            overflow-x: hidden; /* Prevent horizontal scroll due to animations */
+        }
+
+        /* Container for content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: #fff;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease-in-out;
+        }
+
+        header.sticky {
+            padding: 10px 0;
+            background-color: rgba(255, 255, 255, 0.98);
+        }
+
+        .logo {
+            float: left;
+            margin-left: 20px;
+        }
+
+        .logo img {
+            height: 55px;
+            transition: height 0.3s ease-in-out;
+        }
+
+        header.sticky .logo img {
+            height: 40px;
+        }
+
+        .logo a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-size: 2em;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo span {
+            margin-left: 8px;
+            color: #FF8C00; /* Orange accent */
+        }
+
+        nav {
+            float: right;
+            margin-right: 20px;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul li {
+            position: relative;
+            margin-left: 25px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 600;
+            padding: 10px 0;
+            display: block;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+
+        nav ul li a:hover,
+        nav ul li a.active {
+            color: #FF8C00;
+            transform: translateY(-2px);
+        }
+
+        .btn-header {
+            background-color: #FF8C00;
+            color: #fff;
+            padding: 8px 18px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 0.9em;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            margin-left: 20px;
+        }
+
+        .btn-header:hover {
+            background-color: #e67e22;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .clearfix::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        /* Mobile Menu */
+        .menu-toggle {
+            display: none;
+            font-size: 2.2em;
+            cursor: pointer;
+            color: #2c3e50;
+            margin-right: 20px;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(rgba(44, 62, 80, 0.6), rgba(44, 62, 80, 0.6)), url('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') no-repeat center center/cover;
+            color: #fff;
+            text-align: center;
+            padding: 180px 20px;
+            position: relative;
+            overflow: hidden;
+            border-bottom-left-radius: 50px;
+            border-bottom-right-radius: 50px;
+            margin-bottom: 40px;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content h1 {
+            font-size: 4em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);
+            animation: fadeInDown 1s ease-out forwards;
+            opacity: 0;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1.6em;
+            margin-bottom: 50px;
+            animation: fadeInUp 1.2s ease-out forwards;
+            opacity: 0;
+            animation-delay: 0.3s;
+        }
+
+        .hero-buttons .btn {
+            background-color: #FF8C00;
+            color: #fff;
+            padding: 18px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.2em;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            margin: 0 15px;
+            display: inline-block;
+            animation: zoomIn 1.5s ease-out forwards;
+            opacity: 0;
+            animation-delay: 0.6s;
+        }
+
+        .hero-buttons .btn:hover {
+            background-color: #e67e22;
+            transform: translateY(-7px) scale(1.08);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        /* General Section Styles */
+        section {
+            padding: 80px 0;
+            text-align: center;
+            background-color: #fff;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+            opacity: 0; /* For scroll animations */
+            transform: translateY(60px); /* For scroll animations */
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+
+        section.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        section h2 {
+            font-size: 3.5em;
+            color: #2c3e50;
+            margin-bottom: 45px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 12px;
+        }
+
+        section h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 5px;
+            background-color: #FF8C00;
+            border-radius: 3px;
+        }
+
+        section p {
+            font-size: 1.2em;
+            max-width: 900px;
+            margin: 0 auto 35px;
+            color: #555;
+        }
+
+        /* About Us Section */
+        .about-us .grid-2-cols {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 50px;
+            text-align: left;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        .about-us .grid-2-cols img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            transition: transform 0.5s ease;
+        }
+
+        .about-us .grid-2-cols img:hover {
+            transform: scale(1.02);
+        }
+
+        .about-text h3 {
+            color: #2c3e50;
+            font-size: 2.2em;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            font-size: 1.1em;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        /* Accommodation Section */
+        .accommodation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
+            margin-top: 50px;
+        }
+
+        .room-card {
+            background-color: #fdfdfd;
+            border: 1px solid #eee;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+            text-align: left;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .room-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .room-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .room-card-content {
+            padding: 25px;
+        }
+
+        .room-card-content h3 {
+            color: #2c3e50;
+            font-size: 2em;
+            margin-bottom: 12px;
+        }
+
+        .room-card-content .price {
+            font-size: 1.5em;
+            color: #FF8C00;
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .room-card-content .amenities {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .room-card-content .amenities li {
+            background-color: #e8f5e9; /* Light green for amenities */
+            color: #2e7d32;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            display: flex;
+            align-items: center;
+        }
+
+        .room-card-content .amenities li::before {
+            content: '✓'; /* Checkmark icon */
+            margin-right: 5px;
+            font-weight: bold;
+        }
+
+        .room-card-content .btn {
+            display: inline-block;
+            background-color: #28a745; /* Green for booking */
+            color: #fff;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .room-card-content .btn:hover {
+            background-color: #218838;
+            transform: translateY(-3px);
+        }
+
+        /* Facilities Section */
+        .facilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .facility-card {
+            background-color: #e0f7fa; /* Light blue for facilities */
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .facility-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .facility-card .icon {
+            font-size: 3.5em;
+            color: #00bcd4; /* Cyan for icons */
+            margin-bottom: 15px;
+        }
+
+        .facility-card h3 {
+            color: #2c3e50;
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+
+        .facility-card p {
+            font-size: 1em;
+            color: #666;
+            margin-bottom: 0;
+        }
+
+        /* Gallery Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 50px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(44, 62, 80, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            font-size: 1.2em;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        /* Testimonials */
+        .testimonials-slider {
+            position: relative;
+            overflow: hidden;
+            max-width: 900px;
+            margin: 50px auto 0;
+            background-color: #fdf3e6; /* Light orange background */
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonial-slide {
+            display: none; /* Controlled by JS */
+            text-align: center;
+            padding: 20px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .testimonial-slide.active {
+            display: block;
+        }
+
+        .testimonial-slide p {
+            font-style: italic;
+            font-size: 1.3em;
+            color: #333;
+            margin-bottom: 25px;
+        }
+
+        .testimonial-slide .author {
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 1.2em;
+            display: block;
+        }
+
+        .testimonial-slide .role {
+            font-size: 1em;
+            color: #777;
+        }
+
+        .slider-dots {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        .dot {
+            height: 14px;
+            width: 14px;
+            margin: 0 6px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+            cursor: pointer;
+        }
+
+        .dot.active {
+            background-color: #FF8C00;
+        }
+
+        /* Local Attractions Section */
+        .attractions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .attraction-card {
+            background-color: #f7f7f7;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            text-align: left;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .attraction-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .attraction-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .attraction-card-content {
+            padding: 20px;
+        }
+
+        .attraction-card-content h3 {
+            color: #2c3e50;
+            font-size: 1.6em;
+            margin-bottom: 10px;
+        }
+
+        .attraction-card-content p {
+            font-size: 0.95em;
+            color: #666;
+            margin-bottom: 0;
+        }
+
+        /* Contact Us */
+        .contact-form-container {
+            max-width: 800px;
+            margin: 50px auto 0;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+
+        .contact-form-container label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 1.1em;
+        }
+
+        .contact-form-container input[type="text"],
+        .contact-form-container input[type="email"],
+        .contact-form-container textarea {
+            width: calc(100% - 24px); /* Account for padding and border */
+            padding: 12px;
+            margin-bottom: 25px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .contact-form-container input[type="text"]:focus,
+        .contact-form-container input[type="email"]:focus,
+        .contact-form-container textarea:focus {
+            border-color: #FF8C00;
+            box-shadow: 0 0 10px rgba(255, 140, 0, 0.3);
+            outline: none;
+        }
+
+        .contact-form-container textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .contact-form-container button {
+            background-color: #FF8C00;
+            color: #fff;
+            padding: 16px 35px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .contact-form-container button:hover {
+            background-color: #e67e22;
+            transform: translateY(-5px);
+        }
+
+        .contact-info {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .contact-info p {
+            margin-bottom: 12px;
+            font-size: 1.15em;
+            color: #444;
+        }
+
+        .contact-info p strong {
+            color: #2c3e50;
+        }
+
+        .map-container {
+            margin-top: 30px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .map-container img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: #fff;
+            padding: 60px 0;
+            text-align: center;
+            margin-top: 60px;
+            border-top-left-radius: 50px;
+            border-top-right-radius: 50px;
+        }
+
+        footer .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            text-align: left;
+        }
+
+        footer .footer-col {
+            flex: 1;
+            min-width: 280px;
+            margin: 20px;
+        }
+
+        footer .footer-col h3 {
+            color: #FF8C00;
+            margin-bottom: 25px;
+            font-size: 1.8em;
+        }
+
+        footer .footer-col ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        footer .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        footer .footer-col ul li a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 1.05em;
+        }
+
+        footer .footer-col ul li a:hover {
+            color: #FF8C00;
+            text-decoration: underline;
+        }
+
+        footer .social-icons a {
+            color: #fff;
+            font-size: 2em;
+            margin: 0 12px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        footer .social-icons a:hover {
+            color: #FF8C00;
+            transform: translateY(-7px) scale(1.15);
+        }
+
+        footer .copyright {
+            width: 100%;
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 0.95em;
+        }
+
+        /* Utility Classes */
+        .text-center {
+            text-align: center;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Animations (Keyframes) */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes zoomIn {
+            from {
+                opacity: 0;
+                transform: scale(0.7);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Booking Modal */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 2000; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 30px;
+            border: 1px solid #888;
+            width: 90%;
+            max-width: 500px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            position: relative;
+            animation: zoomIn 0.3s ease-out;
+        }
+
+        .modal-content h3 {
+            color: #2c3e50;
+            font-size: 2em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .modal-content label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .modal-content input[type="text"],
+        .modal-content input[type="email"],
+        .modal-content input[type="date"],
+        .modal-content input[type="number"],
+        .modal-content select {
+            width: calc(100% - 24px);
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1em;
+        }
+
+        .modal-content button {
+            background-color: #28a745;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            width: 100%;
+        }
+
+        .modal-content button:hover {
+            background-color: #218838;
+            transform: translateY(-2px);
+        }
+
+        .close-button {
+            color: #aaa;
+            font-size: 2.5em;
+            font-weight: bold;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: #333;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Dark Mode */
+        body.dark-mode {
+            background-color: #1a1a1a;
+            color: #eee;
+        }
+
+        body.dark-mode header {
+            background-color: #222;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.08);
+        }
+
+        body.dark-mode .logo a {
+            color: #eee;
+        }
+
+        body.dark-mode nav ul li a {
+            color: #ccc;
+        }
+
+        body.dark-mode nav ul li a:hover,
+        body.dark-mode nav ul li a.active {
+            color: #FF8C00;
+        }
+
+        body.dark-mode .btn-header {
+            background-color: #FF8C00;
+        }
+
+        body.dark-mode .btn-header:hover {
+            background-color: #e67e22;
+        }
+
+        body.dark-mode section {
+            background-color: #222;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        body.dark-mode section h2 {
+            color: #FF8C00;
+        }
+
+        body.dark-mode section p,
+        body.dark-mode .about-text p,
+        body.dark-mode .room-card-content p,
+        body.dark-mode .facility-card p,
+        body.dark-mode .gallery-overlay,
+        body.dark-mode .testimonial-slide p,
+        body.dark-mode .attraction-card-content p,
+        body.dark-mode .contact-info p {
+            color: #bbb;
+        }
+
+        body.dark-mode .about-text h3,
+        body.dark-mode .room-card-content h3,
+        body.dark-mode .facility-card h3,
+        body.dark-mode .attraction-card-content h3 {
+            color: #eee;
+        }
+
+        body.dark-mode .room-card {
+            background-color: #2a2a2a;
+            border-color: #3a3a3a;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        body.dark-mode .room-card-content .amenities li {
+            background-color: #3a3a3a;
+            color: #90ee90; /* Light green for dark mode amenities */
+        }
+
+        body.dark-mode .room-card-content .btn {
+            background-color: #28a745;
+        }
+
+        body.dark-mode .room-card-content .btn:hover {
+            background-color: #218838;
+        }
+
+        body.dark-mode .facility-card {
+            background-color: #2a2a2a;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        body.dark-mode .facility-card .icon {
+            color: #00bcd4;
+        }
+
+        body.dark-mode .testimonials-slider {
+            background-color: #2a2a2a;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        body.dark-mode .testimonial-slide .author {
+            color: #eee;
+        }
+
+        body.dark-mode .dot {
+            background-color: #555;
+        }
+
+        body.dark-mode .dot.active {
+            background-color: #FF8C00;
+        }
+
+        body.dark-mode .attraction-card {
+            background-color: #2a2a2a;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        body.dark-mode .contact-form-container {
+            background-color: #222;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        body.dark-mode .contact-form-container label {
+            color: #eee;
+        }
+
+        body.dark-mode .contact-form-container input,
+        body.dark-mode .contact-form-container textarea {
+            background-color: #333;
+            border-color: #555;
+            color: #eee;
+        }
+
+        body.dark-mode .contact-form-container input:focus,
+        body.dark-mode .contact-form-container textarea:focus {
+            border-color: #FF8C00;
+            box-shadow: 0 0 10px rgba(255, 140, 0, 0.4);
+        }
+
+        body.dark-mode .contact-form-container button {
+            background-color: #FF8C00;
+        }
+
+        body.dark-mode .contact-form-container button:hover {
+            background-color: #e67e22;
+        }
+
+        body.dark-mode .modal-content {
+            background-color: #2a2a2a;
+            border-color: #444;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+
+        body.dark-mode .modal-content h3 {
+            color: #eee;
+        }
+
+        body.dark-mode .modal-content label {
+            color: #ccc;
+        }
+
+        body.dark-mode .modal-content input,
+        body.dark-mode .modal-content select {
+            background-color: #3a3a3a;
+            border-color: #555;
+            color: #eee;
+        }
+
+        body.dark-mode .close-button {
+            color: #bbb;
+        }
+
+        body.dark-mode .close-button:hover,
+        body.dark-mode .close-button:focus {
+            color: #eee;
+        }
+
+        .mode-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #2c3e50;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 65px;
+            height: 65px;
+            font-size: 2em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            z-index: 1001;
+        }
+
+        .mode-toggle:hover {
+            background-color: #34495e;
+            transform: scale(1.08);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background-color: #fff;
+                position: absolute;
+                top: 85px; /* Adjusted for smaller header */
+                left: 0;
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+                border-top: 3px solid #FF8C00;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.5s ease-in-out;
+            }
+
+            nav ul.active {
+                display: flex;
+                max-height: 600px; /* Adjust based on content */
+            }
+
+            nav ul li {
+                margin: 0;
+                text-align: center;
+                border-bottom: 1px solid #eee;
+            }
+
+            nav ul li:last-child {
+                border-bottom: none;
+            }
+
+            nav ul li a {
+                padding: 15px 0;
+            }
+
+            .btn-header {
+                margin: 15px auto; /* Center button in mobile menu */
+                width: fit-content;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .logo {
+                margin-left: 20px;
+            }
+
+            .hero-content h1 {
+                font-size: 3em;
+            }
+
+            .hero-content p {
+                font-size: 1.3em;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+
+            section h2 {
+                font-size: 2.8em;
+            }
+
+            .about-us .grid-2-cols {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .contact-form-container {
+                padding: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 120px 20px;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5em;
+            }
+
+            .hero-content p {
+                font-size: 1.1em;
+            }
+
+            .hero-buttons .btn {
+                padding: 15px 30px;
+                font-size: 1.1em;
+                margin: 10px 8px;
+            }
+
+            section h2 {
+                font-size: 2.2em;
+            }
+
+            .accommodation-grid,
+            .facilities-grid,
+            .gallery-grid,
+            .attractions-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 25px;
+            }
+
+            footer .container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            footer .footer-col {
+                text-align: center;
+                margin-bottom: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 10px 0;
+            }
+
+            .logo img {
+                height: 40px;
+            }
+
+            .logo a {
+                font-size: 1.6em;
+            }
+
+            .hero-section {
+                padding: 80px 15px;
+            }
+
+            .hero-content h1 {
+                font-size: 2em;
+            }
+
+            .hero-content p {
+                font-size: 0.9em;
+            }
+
+            .hero-buttons {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero-buttons .btn {
+                width: 80%;
+                margin: 8px 0;
+            }
+
+            section {
+                padding: 40px 0;
+            }
+
+            section h2 {
+                font-size: 1.8em;
+            }
+
+            .room-card,
+            .facility-card,
+            .gallery-item,
+            .attraction-card {
+                max-width: 95%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .mode-toggle {
+                width: 55px;
+                height: 55px;
+                font-size: 1.8em;
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .modal-content {
+                padding: 20px;
+            }
+
+            .modal-content h3 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container clearfix">
+            <div class="logo">
+                <a href="#home">
+                    <img src="https://placehold.co/55x55/2c3e50/ffffff?text=NH" alt="The Nomad's Haven Logo">
+                    The Nomad's <span>Haven</span>
+                </a>
+            </div>
+            <nav>
+                <div class="menu-toggle" id="mobile-menu">
+                    &#9776; <!-- Hamburger Icon -->
+                </div>
+                <ul id="main-nav">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#accommodation">Accommodation</a></li>
+                    <li><a href="#facilities">Facilities</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                    <li><a href="#" class="btn-header" id="bookNowBtnNav">Book Now</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero-section">
+            <div class="hero-content">
+                <h1>Your Home Away From Home in the Heart of Jaipur</h1>
+                <p>Experience comfort, community, and unforgettable memories at The Nomad's Haven Hostel.</p>
+                <div class="hero-buttons">
+                    <a href="#" class="btn" id="bookNowBtnHero">Book Your Stay</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about" class="about-us">
+            <div class="container">
+                <h2>About The Nomad's Haven</h2>
+                <p>Nestled in the vibrant city of Jaipur, The Nomad's Haven is more than just a place to sleep – it's a community where travelers connect, share stories, and create lasting friendships.</p>
+                <div class="grid-2-cols">
+                    <div class="about-image">
+                        <img src="https://placehold.co/600x400/FF8C00/ffffff?text=Hostel+Lounge" alt="Hostel Lounge Area">
+                    </div>
+                    <div class="about-text">
+                        <h3>Our Philosophy</h3>
+                        <p>We believe that travel should be accessible, comfortable, and enriching. Our hostel is designed to provide a cozy, clean, and secure environment, coupled with a lively atmosphere that encourages interaction and exploration.</p>
+                        <p>From comfortable dorms to private rooms, a fully equipped kitchen, and a vibrant common lounge, we've got everything you need for a memorable stay in the Pink City.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Accommodation Section -->
+        <section id="accommodation" class="accommodation">
+            <div class="container">
+                <h2>Our Accommodation Options</h2>
+                <p>Whether you're a solo adventurer or traveling with friends, we have a room type to suit your needs, all designed for comfort and convenience.</p>
+                <div class="accommodation-grid">
+                    <div class="room-card">
+                        <img src="https://placehold.co/400x250/28a745/ffffff?text=Mixed+Dorm" alt="Mixed Dorm Room">
+                        <div class="room-card-content">
+                            <h3>Mixed Dormitory</h3>
+                            <span class="price">₹750 / night</span>
+                            <p>Comfortable bunk beds with privacy curtains, individual lockers, and reading lights.</p>
+                            <ul class="amenities">
+                                <li>AC</li>
+                                <li>Free Wi-Fi</li>
+                                <li>Locker</li>
+                                <li>Linen Included</li>
+                            </ul>
+                            <a href="#" class="btn book-room-btn" data-room="Mixed Dormitory">Book Now</a>
+                        </div>
+                    </div>
+                    <div class="room-card">
+                        <img src="https://placehold.co/400x250/FF8C00/ffffff?text=Female+Dorm" alt="Female Dorm Room">
+                        <div class="room-card-content">
+                            <h3>Female Dormitory</h3>
+                            <span class="price">₹800 / night</span>
+                            <p>A safe and comfortable space exclusively for female travelers, with all standard amenities.</p>
+                            <ul class="amenities">
+                                <li>AC</li>
+                                <li>Free Wi-Fi</li>
+                                <li>Locker</li>
+                                <li>Attached Bathroom</li>
+                            </ul>
+                            <a href="#" class="btn book-room-btn" data-room="Female Dormitory">Book Now</a>
+                        </div>
+                    </div>
+                    <div class="room-card">
+                        <img src="https://placehold.co/400x250/2c3e50/ffffff?text=Private+Room" alt="Private Room">
+                        <div class="room-card-content">
+                            <h3>Private Room</h3>
+                            <span class="price">₹2000 / night</span>
+                            <p>Enjoy privacy and comfort in your own room with a double bed and en-suite bathroom.</p>
+                            <ul class="amenities">
+                                <li>AC</li>
+                                <li>Free Wi-Fi</li>
+                                <li>Private Bathroom</li>
+                                <li>TV</li>
+                            </ul>
+                            <a href="#" class="btn book-room-btn" data-room="Private Room">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Facilities Section -->
+        <section id="facilities" class="facilities">
+            <div class="container">
+                <h2>Our Top-Notch Facilities</h2>
+                <p>We offer a range of facilities designed to make your stay as comfortable, convenient, and enjoyable as possible.</p>
+                <div class="facilities-grid">
+                    <div class="facility-card">
+                        <div class="icon">&#128246;</div> <!-- Wi-Fi Icon -->
+                        <h3>High-Speed Wi-Fi</h3>
+                        <p>Stay connected with complimentary high-speed internet throughout the hostel.</p>
+                    </div>
+                    <div class="facility-card">
+                        <div class="icon">&#127869;</div> <!-- Kitchen Icon -->
+                        <h3>Fully Equipped Kitchen</h3>
+                        <p>Prepare your own meals in our spacious and clean communal kitchen.</p>
+                    </div>
+                    <div class="facility-card">
+                        <div class="icon">&#128100;</div> <!-- Lounge Icon -->
+                        <h3>Cozy Common Lounge</h3>
+                        <p>Relax, read, or socialize with fellow travelers in our comfortable lounge area.</p>
+                    </div>
+                    <div class="facility-card">
+                        <div class="icon">&#128704;</div> <!-- Laundry Icon -->
+                        <h3>Laundry Services</h3>
+                        <p>Self-service laundry facilities available for your convenience.</p>
+                    </div>
+                    <div class="facility-card">
+                        <div class="icon">&#128274;</div> <!-- Security Icon -->
+                        <h3>24/7 Security</h3>
+                        <p>Your safety is our priority with round-the-clock security and CCTV surveillance.</p>
+                    </div>
+                    <div class="facility-card">
+                        <div class="icon">&#128214;</div> <!-- Library Icon -->
+                        <h3>Book Exchange & Library</h3>
+                        <p>Discover new reads or swap your old books in our small library.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="gallery">
+            <div class="container">
+                <h2>Our Photo Gallery</h2>
+                <p>Take a visual tour of The Nomad's Haven Hostel and see why it's the perfect place for your next adventure.</p>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="https://placehold.co/400x250/FF8C00/ffffff?text=Hostel+Exterior" alt="Hostel Exterior">
+                        <div class="gallery-overlay">Hostel Exterior</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://placehold.co/400x250/2c3e50/ffffff?text=Dorm+Interior" alt="Dorm Interior">
+                        <div class="gallery-overlay">Dorm Interior</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://placehold.co/400x250/28a745/ffffff?text=Common+Area" alt="Common Area">
+                        <div class="gallery-overlay">Common Area</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://placehold.co/400x250/FF8C00/ffffff?text=Kitchen+View" alt="Kitchen View">
+                        <div class="gallery-overlay">Kitchen View</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://placehold.co/400x250/2c3e50/ffffff?text=Private+Room+View" alt="Private Room View">
+                        <div class="gallery-overlay">Private Room View</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://placehold.co/400x250/28a745/ffffff?text=Reception" alt="Reception Desk">
+                        <div class="gallery-overlay">Reception Desk</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="testimonials">
+            <div class="container">
+                <h2>What Our Guests Say</h2>
+                <div class="testimonials-slider">
+                    <div class="testimonial-slide active">
+                        <p>"Absolutely loved my stay at The Nomad's Haven! The staff were incredibly friendly, the facilities were clean, and the common area was perfect for meeting other travelers."</p>
+                        <span class="author">- Sarah L. from Canada</span>
+                        <span class="role">Solo Traveler</span>
+                    </div>
+                    <div class="testimonial-slide">
+                        <p>"Best hostel experience in Jaipur! Great location, comfortable beds, and a fantastic vibe. Highly recommend for anyone looking for a social and welcoming place."</p>
+                        <span class="author">- Raj K. from India</span>
+                        <span class="role">Backpacker</span>
+                    </div>
+                    <div class="testimonial-slide">
+                        <p>"The private room was perfect for my needs, quiet and comfortable. The communal kitchen was a huge plus, saved me a lot on food. Will definitely be back!"</p>
+                        <span class="author">- Emily R. from UK</span>
+                        <span class="role">Digital Nomad</span>
+                    </div>
+                </div>
+                <div class="slider-dots">
+                    <span class="dot active" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Local Attractions Section -->
+        <section id="attractions" class="attractions">
+            <div class="container">
+                <h2>Explore Jaipur from Our Doorstep</h2>
+                <p>The Nomad's Haven is strategically located, offering easy access to Jaipur's most iconic attractions.</p>
+                <div class="attractions-grid">
+                    <div class="attraction-card">
+                        <img src="https://placehold.co/400x200/FF8C00/ffffff?text=Hawa+Mahal" alt="Hawa Mahal">
+                        <div class="attraction-card-content">
+                            <h3>Hawa Mahal (Palace of Winds)</h3>
+                            <p>A stunning five-story palace known for its unique architecture and 953 small windows.</p>
+                        </div>
+                    </div>
+                    <div class="attraction-card">
+                        <img src="https://placehold.co/400x200/2c3e50/ffffff?text=Amber+Fort" alt="Amber Fort">
+                        <div class="attraction-card-content">
+                            <h3>Amber Fort</h3>
+                            <p>A magnificent fort with artistic Hindu style elements, offering breathtaking views.</p>
+                        </div>
+                    </div>
+                    <div class="attraction-card">
+                        <img src="https://placehold.co/400x200/28a745/ffffff?text=City+Palace" alt="City Palace">
+                        <div class="attraction-card-content">
+                            <h3>City Palace</h3>
+                            <p>A complex of courtyards, gardens, and buildings, blending Rajput and Mughal architecture.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Us Section -->
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2>Get in Touch</h2>
+                <p>Have questions or ready to book? Reach out to us, and we'll be happy to assist you!</p>
+                <div class="contact-form-container">
+                    <form id="contactForm">
+                        <label for="name">Your Name:</label>
+                        <input type="text" id="name" name="name" required>
+
+                        <label for="email">Your Email:</label>
+                        <input type="email" id="email" name="email" required>
+
+                        <label for="subject">Subject:</label>
+                        <input type="text" id="subject" name="subject" required>
+
+                        <label for="message">Your Message:</label>
+                        <textarea id="message" name="message" rows="7" required></textarea>
+
+                        <button type="submit">Send Message</button>
+                    </form>
+                </div>
+                <div class="contact-info">
+                    <p><strong>Address:</strong> Hostel Lane, Near Tourist Spot, Jaipur, Rajasthan, India, 302001</p>
+                    <p><strong>Phone:</strong> +91 9876 543210</p>
+                    <p><strong>Email:</strong> bookings@nomadshaven.com</p>
+                    <p><strong>Reception Hours:</strong> 24/7</p>
+                </div>
+                <div class="map-container">
+                    <!-- Placeholder for map. In a real scenario, this would be an embedded Google Map. -->
+                    <img src="https://placehold.co/800x450/ccc/555?text=Hostel+Location+Map" alt="Hostel Location Map">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#accommodation">Accommodation</a></li>
+                    <li><a href="#facilities">Facilities</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Contact Us</h3>
+                <p>Hostel Lane, Near Tourist Spot,<br> Jaipur, Rajasthan, India, 302001</p>
+                <p>Phone: +91 9876 543210</p>
+                <p>Email: bookings@nomadshaven.com</p>
+            </div>
+            <div class="footer-col">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#" target="_blank" title="Facebook">&#xf09a;</a> <!-- Facebook Icon (Unicode) -->
+                    <a href="#" target="_blank" title="Instagram">&#xf16d;</a> <!-- Instagram Icon (Unicode) -->
+                    <a href="#" target="_blank" title="Twitter">&#xf099;</a>  <!-- Twitter Icon (Unicode) -->
+                    <a href="#" target="_blank" title="TripAdvisor">&#xf262;</a> <!-- TripAdvisor Icon (Unicode) -->
+                </div>
+                <p style="font-size: 0.85em; margin-top: 20px;">
+                    <a href="#" style="color: #fff; text-decoration: none;">Privacy Policy</a> |
+                    <a href="#" style="color: #fff; text-decoration: none;">Terms & Conditions</a>
+                </p>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; <span id="current-year"></span> The Nomad's Haven Hostel. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Dark Mode Toggle Button -->
+    <button class="mode-toggle" id="modeToggle">🌙</button>
+
+    <!-- Booking Modal Structure -->
+    <div id="bookingModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h3>Book Your Stay</h3>
+            <form id="bookingForm">
+                <label for="roomType">Room Type:</label>
+                <select id="roomType" name="roomType" required>
+                    <option value="">Select Room Type</option>
+                    <option value="Mixed Dormitory">Mixed Dormitory</option>
+                    <option value="Female Dormitory">Female Dormitory</option>
+                    <option value="Private Room">Private Room</option>
+                </select>
+
+                <label for="checkInDate">Check-in Date:</label>
+                <input type="date" id="checkInDate" name="checkInDate" required>
+
+                <label for="checkOutDate">Check-out Date:</label>
+                <input type="date" id="checkOutDate" name="checkOutDate" required>
+
+                <label for="numGuests">Number of Guests:</label>
+                <input type="number" id="numGuests" name="numGuests" min="1" value="1" required>
+
+                <label for="guestName">Your Full Name:</label>
+                <input type="text" id="guestName" name="guestName" required>
+
+                <label for="guestEmail">Your Email:</label>
+                <input type="email" id="guestEmail" name="guestEmail" required>
+
+                <button type="submit">Confirm Booking</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Smooth Scrolling for Navigation
+        document.querySelectorAll('nav ul li a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href && href.startsWith('#')) {
+                    e.preventDefault();
+                    const targetId = href.substring(1);
+                    const targetElement = document.getElementById(targetId);
+
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - (document.querySelector('header').offsetHeight - 1), // Adjust for sticky header
+                            behavior: 'smooth'
+                        });
+
+                        // Close mobile menu if open
+                        const mainNav = document.getElementById('main-nav');
+                        if (mainNav.classList.contains('active')) {
+                            mainNav.classList.remove('active');
+                            document.getElementById('mobile-menu').textContent = '☰';
+                        }
+                    }
+                }
+            });
+        });
+
+        // Sticky Header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 0) {
+                header.classList.add('sticky');
+            } else {
+                header.classList.remove('sticky');
+            }
+        });
+
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu').addEventListener('click', function() {
+            const mainNav = document.getElementById('main-nav');
+            mainNav.classList.toggle('active');
+            if (mainNav.classList.contains('active')) {
+                this.textContent = '✕'; // Change to close icon
+            } else {
+                this.textContent = '☰'; // Change back to hamburger
+            }
+        });
+
+        // Scroll Animations for Sections
+        const sections = document.querySelectorAll('section');
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.2 // Trigger when 20% of the section is visible
+        };
+
+        const sectionObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                    observer.unobserve(entry.target); // Stop observing once animated
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            sectionObserver.observe(section);
+        });
+
+        // Testimonial Slider
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            let i;
+            const slides = document.getElementsByClassName("testimonial-slide");
+            const dots = document.getElementsByClassName("dot");
+            if (n > slides.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = slides.length}
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+                slides[i].classList.remove('active');
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex-1].style.display = "block";
+            slides[slideIndex-1].classList.add('active');
+            dots[slideIndex-1].className += " active";
+        }
+
+        // Auto-advance testimonials
+        setInterval(function() {
+            slideIndex++;
+            showSlides(slideIndex);
+        }, 8000); // Change slide every 8 seconds
+
+        // Contact Form Validation (Client-Side)
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent actual form submission
+
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const subject = document.getElementById('subject').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            let isValid = true;
+            let errorMessage = '';
+
+            if (name === '') {
+                errorMessage += 'Name is required.\n';
+                isValid = false;
+            }
+            if (email === '') {
+                errorMessage += 'Email is required.\n';
+                isValid = false;
+            } else if (!/\S+@\S+\.\S+/.test(email)) {
+                errorMessage += 'Please enter a valid email address.\n';
+                isValid = false;
+            }
+            if (subject === '') {
+                errorMessage += 'Subject is required.\n';
+                isValid = false;
+            }
+            if (message === '') {
+                errorMessage += 'Message is required.\n';
+                isValid = false;
+            }
+
+            if (isValid) {
+                // In a real scenario, you'd send this data to a server.
+                // For this pure HTML file, we'll just show an alert.
+                alert('Thank you for your message! We will get back to you shortly.');
+                this.reset(); // Clear the form
+            } else {
+                alert('Please correct the following errors:\n' + errorMessage);
+            }
+        });
+
+        // Dark Mode Toggle
+        const modeToggle = document.getElementById('modeToggle');
+        modeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            // Save preference to local storage
+            if (document.body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+                modeToggle.textContent = '☀️'; // Sun icon for light mode
+            } else {
+                localStorage.setItem('theme', 'light');
+                modeToggle.textContent = '🌙'; // Moon icon for dark mode
+            }
+        });
+
+        // Check for saved theme preference on load
+        document.addEventListener('DOMContentLoaded', () => {
+            if (localStorage.getItem('theme') === 'dark') {
+                document.body.classList.add('dark-mode');
+                modeToggle.textContent = '☀️';
+            } else {
+                modeToggle.textContent = '�';
+            }
+            // Set current year in footer
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+        });
+
+        // Booking Modal Logic
+        const bookingModal = document.getElementById('bookingModal');
+        const closeButton = document.querySelector('.close-button');
+        const bookNowButtons = document.querySelectorAll('#bookNowBtnNav, #bookNowBtnHero, .book-room-btn');
+        const bookingForm = document.getElementById('bookingForm');
+        const roomTypeSelect = document.getElementById('roomType');
+
+        // Function to open the modal
+        function openBookingModal(room = '') {
+            bookingModal.style.display = 'flex'; // Use flex to center
+            if (room) {
+                roomTypeSelect.value = room; // Pre-select room type if passed
+            } else {
+                roomTypeSelect.value = ''; // Reset if no room is passed
+            }
+            // Set min date for check-in to today
+            const today = new Date();
+            const yyyy = today.getFullYear();
+            const mm = String(today.getMonth() + 1).padStart(2, '0'); // Months start at 0!
+            const dd = String(today.getDate()).padStart(2, '0');
+            const todayString = `${yyyy}-${mm}-${dd}`;
+            document.getElementById('checkInDate').min = todayString;
+            document.getElementById('checkOutDate').min = todayString; // Also set for checkout
+        }
+
+        // Function to close the modal
+        function closeBookingModal() {
+            bookingModal.style.display = 'none';
+            bookingForm.reset(); // Clear the form when closing
+        }
+
+        // Event listeners for opening the modal
+        bookNowButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                const room = this.dataset.room || ''; // Get room type if available
+                openBookingModal(room);
+            });
+        });
+
+        // Event listener for closing the modal
+        closeButton.addEventListener('click', closeBookingModal);
+
+        // Close modal if user clicks outside of it
+        window.addEventListener('click', function(event) {
+            if (event.target == bookingModal) {
+                closeBookingModal();
+            }
+        });
+
+        // Booking Form Submission (Client-Side Validation)
+        bookingForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const roomType = roomTypeSelect.value;
+            const checkInDate = document.getElementById('checkInDate').value;
+            const checkOutDate = document.getElementById('checkOutDate').value;
+            const numGuests = document.getElementById('numGuests').value;
+            const guestName = document.getElementById('guestName').value.trim();
+            const guestEmail = document.getElementById('guestEmail').value.trim();
+
+            let isValid = true;
+            let errorMessage = '';
+
+            if (roomType === '') {
+                errorMessage += 'Please select a room type.\n';
+                isValid = false;
+            }
+            if (checkInDate === '') {
+                errorMessage += 'Check-in date is required.\n';
+                isValid = false;
+            }
+            if (checkOutDate === '') {
+                errorMessage += 'Check-out date is required.\n';
+                isValid = false;
+            }
+            if (new Date(checkInDate) >= new Date(checkOutDate)) {
+                errorMessage += 'Check-out date must be after check-in date.\n';
+                isValid = false;
+            }
+            if (numGuests < 1) {
+                errorMessage += 'Number of guests must be at least 1.\n';
+                isValid = false;
+            }
+            if (guestName === '') {
+                errorMessage += 'Your full name is required.\n';
+                isValid = false;
+            }
+            if (guestEmail === '') {
+                errorMessage += 'Your email is required.\n';
+                isValid = false;
+            } else if (!/\S+@\S+\.\S+/.test(guestEmail)) {
+                errorMessage += 'Please enter a valid email address.\n';
+                isValid = false;
+            }
+
+            if (isValid) {
+                // Simulate booking success
+                alert(`Booking Confirmed!\n\nRoom Type: ${roomType}\nCheck-in: ${checkInDate}\nCheck-out: ${checkOutDate}\nGuests: ${numGuests}\nName: ${guestName}\nEmail: ${guestEmail}\n\nWe look forward to welcoming you!`);
+                closeBookingModal(); // Close modal on success
+            } else {
+                alert('Please correct the following errors:\n' + errorMessage);
+            }
+        });
+
+        // Social Media Icons (Font Awesome inspired Unicode)
+        // These are Unicode characters that visually resemble social media icons.
+        // For actual Font Awesome icons, you would need to link the Font Awesome CDN in the <head>.
+        // Example: <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        // Then use classes like <i class="fab fa-facebook-f"></i>
+    </script>
+</body>
+</html>
+�
